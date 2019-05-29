@@ -1,0 +1,98 @@
+\documentclass[a4paper, twocolumn, 11pt]{article}
+\include{TeXstras}
+
+\title{Burn more grasslands} % The article title
+
+
+\author{
+	\authorstyle{Betsey York, MSc\textsuperscript{1,2} \\Devan Allen McGranahan, PhD\textsuperscript{1}} % Authors
+	\newline\newline % Space before institutions
+	\textsuperscript{1}\institution{Range Science Program, School of Natural Resource Sciences, North Dakota State University}\\ % Institution 1
+	\textsuperscript{2}\institution{Oklahoma Department of Conservation}\\ % Institution 2
+}
+
+\date{\today} 
+
+\begin{document} 
+
+\begin{titlepage}
+	\include{TitlePage}
+\end{titlepage}
+
+\twocolumn[
+\begin{@twocolumnfalse}
+	
+\begin{mybox}{\section{Executive Summary} \vspace{0.75cm}}
+	
+{\kant[10-13] }
+
+\end{mybox}
+
+\end{@twocolumnfalse}
+]
+
+\pagebreak 
+
+\twocolumn[
+\begin{@twocolumnfalse}
+	
+\tableofcontents{}
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+\end{@twocolumnfalse}
+]
+\clearpage
+%\twocolumn[
+%\begin{@twocolumnfalse}
+%\listoffigures
+%\end{@twocolumnfalse}
+%]
+
+\clearpage
+
+\thispagestyle{firstpage} 
+
+\twocolumn[
+\begin{@twocolumnfalse}
+	
+	\maketitle
+	\begin{abstract}
+		\lettrineabstract{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce maximus nisi ligula. Morbi laoreet ex ligula, vitae lobortis purus mattis vel. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec ac metus ut turpis mollis placerat et nec enim. Duis tristique nibh maximus faucibus facilisis. Praesent in consequat leo. Maecenas condimentum ex rhoncus, elementum diam vel, malesuada ante. }\\
+	\end{abstract}
+\end{@twocolumnfalse}
+]
+%
+%	R E P O R T   C O N T E N T S
+%
+% 	Introduction
+	\input{sections/introduction}
+%
+%	Methods
+	\input{sections/methods}
+%
+%	Discussion
+	\input{sections/discussion}
+%
+%	Bibliography
+	\clearpage
+	\onecolumn{\tiny{
+		\printbibliography[title={References cited}] 
+	}}
+%
+\clearpage
+\newpage
+\appendices % environment defined by appendix package
+\gdef\thesection{\Alph{section}}
+\renewcommand\thefigure{\thesection.\arabic{figure}}
+\renewcommand\thetable{\thesection.\arabic{table}} 
+\makeatletter
+\renewcommand\@seccntformat[1]{Appendix \csname the#1\endcsname.\hspace{0.5em}}
+\makeatother
+\setcounter{secnumdepth}{1} % Restore heading numerals
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\input{sections/AppAgate}
+\clearpage
+\newpage
+
+\end{document}
