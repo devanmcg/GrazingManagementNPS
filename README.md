@@ -1,1 +1,1 @@
-# GrazingManagementNPS
+# NPS CESU: Management of grazing resources
