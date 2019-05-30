@@ -1,14 +1,20 @@
-\documentclass[a4paper, twocolumn, 11pt]{article}
+\documentclass[a4paper,
+			  twocolumn,
+			  11pt]
+			  {article}
 \include{TeXstras}
 
 \title{Burn more grasslands} % The article title
 
 
 \author{
-	\authorstyle{Betsey York, MSc\textsuperscript{1,2} \\Devan Allen McGranahan, PhD\textsuperscript{1}} % Authors
+	\authorstyle{Betsey York, MSc\textsuperscript{1,2} \\
+	Devan Allen McGranahan, PhD\textsuperscript{1}} 
 	\newline\newline % Space before institutions
-	\textsuperscript{1}\institution{Range Science Program, School of Natural Resource Sciences, North Dakota State University}\\ % Institution 1
-	\textsuperscript{2}\institution{Oklahoma Department of Conservation}\\ % Institution 2
+	\textsuperscript{1}
+	\institution{Range Science Program, School of Natural Resource Sciences, North Dakota State University}\\ 
+	\textsuperscript{2}
+	\institution{Oklahoma Department of Conservation}\\ 
 }
 
 \date{\today} 
@@ -19,46 +25,34 @@
 	\include{TitlePage}
 \end{titlepage}
 
-\twocolumn[
-\begin{@twocolumnfalse}
-	
-\begin{mybox}{\section{Executive Summary} \vspace{0.75cm}}
+\onecolumn{	
+\begin{mybox}
+	{\section{Executive Summary} \vspace{0.75cm}}
 	
 {\kant[10-13] }
 
 \end{mybox}
+}
+\clearpage 
 
-\end{@twocolumnfalse}
-]
-
-\pagebreak 
-
-\twocolumn[
-\begin{@twocolumnfalse}
-	
-\tableofcontents{}
-\addcontentsline{toc}{section}{\listfigurename}
+\tableofcontents
+\addcontentsline{toc}
+	{section}
+	{\listfigurename}
+\addcontentsline{toc}
+	{section}
+	{\listtablename}
 \listoffigures
-\end{@twocolumnfalse}
-]
-\clearpage
-%\twocolumn[
-%\begin{@twocolumnfalse}
-%\listoffigures
-%\end{@twocolumnfalse}
-%]
-
+\listoftables
 \clearpage
 
 \thispagestyle{firstpage} 
-
 \twocolumn[
 \begin{@twocolumnfalse}
-	
-	\maketitle
-	\begin{abstract}
-		\lettrineabstract{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce maximus nisi ligula. Morbi laoreet ex ligula, vitae lobortis purus mattis vel. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec ac metus ut turpis mollis placerat et nec enim. Duis tristique nibh maximus faucibus facilisis. Praesent in consequat leo. Maecenas condimentum ex rhoncus, elementum diam vel, malesuada ante. }\\
-	\end{abstract}
+\maketitle
+\begin{abstract}
+	\input{sections/abstract}
+\end{abstract}
 \end{@twocolumnfalse}
 ]
 %
@@ -75,12 +69,15 @@
 %
 %	Bibliography
 	\clearpage
+	\addcontentsline{toc}
+		{section}
+		{References cited}
 	\onecolumn{\tiny{
 		\printbibliography[title={References cited}] 
 	}}
 %
-\clearpage
-\newpage
+%\clearpage
+%\newpage
 \appendices % environment defined by appendix package
 \gdef\thesection{\Alph{section}}
 \renewcommand\thefigure{\thesection.\arabic{figure}}
@@ -91,7 +88,19 @@
 \setcounter{secnumdepth}{1} % Restore heading numerals
 \setcounter{figure}{0}
 \setcounter{table}{0}
-\input{sections/AppAgate}
+\counterwithin{figure}
+{section}
+\counterwithin{table}
+	{section}
+%
+%	Input content
+%
+\include{sections/AppAgate}
+\include{sections/AppBadlands}
+\include{sections/AppTallgrass}
+\include{sections/AppTheodore}
+\include{sections/AppWindCave}
+%
 \clearpage
 \newpage
 

@@ -1,72 +1,84 @@
 \usepackage{kantlipsum}
 
+\usepackage{multicol}
+
 \usepackage[svgnames]{xcolor} 
 	\definecolor{BisonGreen}{RGB}{0,102,51}
 	\definecolor{BisonYellow}{RGB}{255,204,0}
 
 \usepackage{transparent}
 
-\usepackage{lscape}
-\usepackage{longtable}
+\usepackage{longtable, 					lscape}
+	\setlength{\LTleft}{0pt}
+\usepackage{typearea}
 \usepackage{setspace}
 %\doublespacing
 \usepackage[
 colorlinks=true, 
 allcolors = {BisonGreen}]{hyperref}
 \usepackage{indentfirst}
-\usepackage[toc]{appendix}
+
 \setcounter{secnumdepth}{-2} % Remove heading numerals
+% TOC stuff 
+\usepackage[titletoc]{appendix} % How appendix appears
 
-
-\usepackage[utf8]{inputenc} % Required for inputting international characters
-\usepackage[T1]{fontenc} % Output font encoding for international characters
-
-%\usepackage{PTSerif} % Use the Paratype Serif font
-% \usepackage{XCharter} % Use the XCharter font
+% Fonts & characters
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}
 
 \renewcommand{\familydefault}{\sfdefault}
 %\usepackage{helvet}
 %\usepackage{avant}
 \usepackage{epigrafica}
 
+% Figures & captions
 \usepackage{graphicx} 
 \graphicspath{{figures/}}
-\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\setkeys{Gin}
+	{width=\linewidth,
+	totalheight=\textheight,
+	keepaspectratio}
 
 \newcommand*{\plogo}{\includegraphics[width=0.5\textwidth]{NDSURangeScience.pdf}} 
 
- \newcommand*{\R}{\textup{\textmd{\textsf{R{ }}}}}
+\newcommand*{\R}{\textup{\textmd{\textsf{R{ }}}}}
 \newcommand*{\sw}[1]{\texttt{\textrm{#1}}}
 
 \usepackage[english]{babel} % English language hyphenation
-\addto{\captionsenglish}{\renewcommand{\abstractname}{\textcolor{BisonYellow}{Summary}}}
+\addto{\captionsenglish}
+	{\renewcommand{\abstractname}
+	{\textcolor{BisonYellow}
+	{Summary}}}
 \usepackage{microtype} % Better typography
 %\usepackage{amsmath,amsfonts,amsthm} % Math packages for equations
-\usepackage[hang, small, labelfont=bf, up, textfont=it]{caption} % Custom captions under/above tables and figures
+\usepackage{chngcntr}
+\usepackage[hang, 
+			small,
+			labelfont=bf, 
+			up]			{caption} % Custom captions under/above tables and figures
+\usepackage{subcaption}
+
 \usepackage{booktabs} % Horizontal rules in tables
 %\usepackage{lastpage} % Used to determine the number of pages in the document (for "Page X of Total")
-\usepackage{enumitem} % Required for customising lists
-\setlist{noitemsep} % Remove spacing between bullet/numbered list elements
 \usepackage{sectsty} % Enables custom section titles
 \allsectionsfont{\usefont{OT1}{phv}{b}{n}} % Change the font of all section commands (Helvetica)
 
 %----------------------------------------------------------------------------------------
 %	MARGINS AND SPACING
 %----------------------------------------------------------------------------------------
+\usepackage[ % margins
+	top=1cm, 
+	bottom=1.5cm, 
+	left=2cm,
+	right=2cm, 
+	includehead, 
+	includefoot
+		]{geometry}
 
-\usepackage{geometry} % Required for adjusting page dimensions
+\setlength{\columnsep}{5mm} % Column separation width
 
-\geometry{
-	top=1cm, % Top margin
-	bottom=1.5cm, % Bottom margin
-	left=2cm, % Left margin
-	right=2cm, % Right margin
-	includehead, % Include space for a header
-	includefoot, % Include space for a footer
-	%showframe, % Uncomment to show how the type block is set on the page
-}
-
-\setlength{\columnsep}{7mm} % Column separation width
+\usepackage{enumitem} % Customise lists
+\setlist{noitemsep} % Remove spacing between bullet/numbered list elements
 
 %----------------------------------------------------------------------------------------
 %	HEADERS AND FOOTERS
@@ -95,6 +107,11 @@ allcolors = {BisonGreen}]{hyperref}
 \fancypagestyle{firstpage}{ % Page style for the first page with the title
 	\fancyhf{}
 	\renewcommand{\footrulewidth}{0pt} % Suppress footer rule
+}
+
+\fancypagestyle{lscapefancy}{%
+	\fancyhf{}
+	\renewcommand{\footrulewidth}{0pt}
 }
 
 %----------------------------------------------------------------------------------------
@@ -156,13 +173,17 @@ allcolors = {BisonGreen}]{hyperref}
 \usepackage[framemethod=tikz]{mdframed}
 
 \mdfdefinestyle{boxstyle}{%
-	linecolor=BisonGreen,outerlinewidth=1pt,%
-	frametitlerule=true,frametitlefont=\centering\sffamily\bfseries\color{BisonYellow},%
-	frametitlerulewidth=1pt,frametitlerulecolor=BisonGreen,%
-	frametitlebackgroundcolor=BisonGreen,
-	backgroundcolor=BisonYellow!10,
+	linecolor=BisonGreen,
+	outerlinewidth=2pt,%
+	frametitlerule=true,
+	frametitlefont=\centering\sffamily\bfseries\color{BisonGreen},%
+	frametitlerulewidth=1pt,
+	frametitlerulecolor=BisonGreen,%
+	frametitlebackgroundcolor=BisonYellow!40,
+	backgroundcolor=BisonGreen!10,
+	fontcolor=black,
 	innertopmargin=\topskip,
-	roundcorner=5pt
+	roundcorner=10pt
 }
 \newmdenv[style=boxstyle]{exa}
 \newenvironment{mybox}[1]
