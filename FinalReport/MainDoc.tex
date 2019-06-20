@@ -4,21 +4,6 @@
 			  {article}
 \include{TeXstras}
 
-\title{Burn more grasslands} % The article title
-
-
-\author{
-	\authorstyle{Betsey York, MSc\textsuperscript{1,2} \\
-	Devan Allen McGranahan, PhD\textsuperscript{1}} 
-	\newline\newline % Space before institutions
-	\textsuperscript{1}
-	\institution{Range Science Program, School of Natural Resource Sciences, North Dakota State University}\\ 
-	\textsuperscript{2}
-	\institution{Oklahoma Department of Conservation}\\ 
-}
-
-\date{\today} 
-
 \begin{document} 
 
 \begin{titlepage}
@@ -28,9 +13,7 @@
 \onecolumn{	
 \begin{mybox}
 	{\section{Executive Summary} \vspace{0.75cm}}
-	
-{\kant[10-13] }
-
+	\input{sections/ExecutiveSummary}
 \end{mybox}
 }
 \clearpage 
@@ -39,11 +22,13 @@
 \addcontentsline{toc}
 	{section}
 	{\listfigurename}
-\addcontentsline{toc}
+\addcontentsline8{toc}
 	{section}
 	{\listtablename}
+\clearpage
 \listoffigures
 \listoftables
+\input{sections/abbreviations}
 \clearpage
 
 \thispagestyle{firstpage} 
@@ -79,27 +64,46 @@
 %\clearpage
 %\newpage
 \appendices % environment defined by appendix package
-\gdef\thesection{\Alph{section}}
+%
+%	Counters
+%
+\setcounter{secnumdepth}{1} % Restore section counter
+\gdef\thesection{\Alph{section}} % Use letter section counter
+% Reset counters: 
+\setcounter{figure}{0}
+\setcounter{table}{0}
+% Restart counters w/in sections
+\counterwithin{figure}
+	{section}
+\counterwithin{table}
+	{section}
 \renewcommand\thefigure{\thesection.\arabic{figure}}
 \renewcommand\thetable{\thesection.\arabic{table}} 
 \makeatletter
 \renewcommand\@seccntformat[1]{Appendix \csname the#1\endcsname.\hspace{0.5em}}
 \makeatother
-\setcounter{secnumdepth}{1} % Restore heading numerals
-\setcounter{figure}{0}
-\setcounter{table}{0}
-\counterwithin{figure}
-{section}
-\counterwithin{table}
-	{section}
+
+
 %
 %	Input content
 %
+\include{sections/AppIntro}
 \include{sections/AppAgate}
 \include{sections/AppBadlands}
 \include{sections/AppTallgrass}
 \include{sections/AppTheodore}
 \include{sections/AppWindCave}
+\clearpage 
+\section{Interview prompts}
+\label{app:interview}
+	\includegraphics[width=1\textwidth]
+{figures/interview1.PNG}
+\clearpage
+	\includegraphics[width=1\textwidth]
+{figures/interview2.PNG}
+\clearpage 
+\include{sections/AppSurvey}
+
 %
 \clearpage
 \newpage

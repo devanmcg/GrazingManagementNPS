@@ -1,3 +1,24 @@
+\title{Identifying existing knowledge and necessary data on grassland resources to support resilient grazing ecosystems} % The article title
+
+\newcommand{\ShortTitle}{Grassland resources \& grazing ecosystems}
+\let\runtitle\ShortTitle
+
+\author{
+	\authorstyle{Betsey York, MSc\textsuperscript{1,2} \\
+		Devan Allen McGranahan, PhD\textsuperscript{1}} 
+	\newline\newline % Space before institutions
+	\textsuperscript{1}
+	\institution{Range Science Program, School of Natural Resource Sciences, North Dakota State University}\\ 
+	\textsuperscript{2}
+	\institution{Oklahoma Department of Conservation}\\ 
+}
+
+\date{\today} 
+
+%
+% Packages and Settings
+%
+
 \usepackage{kantlipsum}
 
 \usepackage{multicol}
@@ -8,7 +29,7 @@
 
 \usepackage{transparent}
 
-\usepackage{longtable, 					lscape}
+\usepackage{longtable, 	lscape}
 	\setlength{\LTleft}{0pt}
 \usepackage{typearea}
 \usepackage{setspace}
@@ -20,7 +41,7 @@ allcolors = {BisonGreen}]{hyperref}
 
 \setcounter{secnumdepth}{-2} % Remove heading numerals
 % TOC stuff 
-\usepackage[titletoc]{appendix} % How appendix appears
+\usepackage[titletoc, title]{appendix} % How appendix appears
 
 % Fonts & characters
 \usepackage[utf8]{inputenc} 
@@ -51,11 +72,12 @@ allcolors = {BisonGreen}]{hyperref}
 	{Summary}}}
 \usepackage{microtype} % Better typography
 %\usepackage{amsmath,amsfonts,amsthm} % Math packages for equations
-\usepackage{chngcntr}
-\usepackage[hang, 
-			small,
+\usepackage{chngcntr} % reset counters 
+\usepackage[footnotesize,
 			labelfont=bf, 
-			up]			{caption} % Custom captions under/above tables and figures
+			up]			
+		{caption} % Custom captions under/above tables and figures
+
 \usepackage{subcaption}
 
 \usepackage{booktabs} % Horizontal rules in tables
@@ -66,8 +88,9 @@ allcolors = {BisonGreen}]{hyperref}
 %----------------------------------------------------------------------------------------
 %	MARGINS AND SPACING
 %----------------------------------------------------------------------------------------
+\usepackage{changepage}
 \usepackage[ % margins
-	top=1cm, 
+	top=1.5cm, 
 	bottom=1.5cm, 
 	left=2cm,
 	right=2cm, 
@@ -96,7 +119,7 @@ allcolors = {BisonGreen}]{hyperref}
 
 % Headers
 \lhead{} % Left header
-\chead{\textit{\thetitle}} % Center header - currently printing the article title
+\chead{\textit{\runtitle}} % Center header - currently printing the article title
 \rhead{} % Right header
 
 % Footers
@@ -129,11 +152,18 @@ allcolors = {BisonGreen}]{hyperref}
 \pretitle{
 	\vspace{-30pt} % Move the entire title section up
 	\HorRule\vspace{10pt} % Horizontal rule before the title
-	\fontsize{32}{36}\usefont{OT1}{phv}{b}{n}\selectfont % Helvetica
-	\color{BisonGreen} % Text colour for the title and author(s)
+	\fontsize{20}{20}\usefont{OT1}{phv}{b}{n}\selectfont % Helvetica
+	\color{BisonGreen!120} % Text colour for the title and author(s)
 }
 
-\posttitle{\par\vskip 15pt} % Whitespace under the title
+\posttitle{%
+	\par\vskip 15pt 
+	\fontsize{14}{5}
+	\color{BisonYellow!150}
+	\textit{Status of\textemdash and recommendations for\textemdash data, knowledge, \\
+		and management in the 
+		NPS Midwest Region}
+	\par\vskip 15pt} % Whitespace under the title
 
 \preauthor{} % Anything that will appear before \author is printed
 
@@ -142,6 +172,9 @@ allcolors = {BisonGreen}]{hyperref}
 	\par\HorRule % Horizontal rule after the title
 	\vspace{20pt} % Space after the title section
 }
+
+
+
 
 %----------------------------------------------------------------------------------------
 %	ABSTRACT
@@ -209,8 +242,8 @@ bibstyle = nature,
 giveninits=true,
 mincitenames=1,
 maxcitenames=2,
-maxbibnames=5,
-minbibnames=2,
+maxbibnames=2,
+minbibnames=1,
 hyperref=true,
 %editor=false,
 uniquename=false,
@@ -251,8 +284,10 @@ backend=biber]{biblatex}
 \AtEveryCitekey{\clearlist{langid}}
 
 % Call bib file
+%\addbibresource{NPS_merged.bib}
 \addbibresource{NPS.bib}
 \addbibresource{NPS2.bib}
+\addbibresource{NPS3.bib}
 % Hide certain fields from biber	
 \DeclareSourcemap{
 	\maps[datatype=biblatex]{
